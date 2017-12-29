@@ -1,9 +1,11 @@
 var React 			= require('react');
 var Reflux 			= require('reflux');
-var ContactsStore 	= require('../stores/contactsStore');
+var ContactsStore 	= require('../../stores/contactsStore');
 
 var Link 			= require('react-router').Link;
 
+// require('./contacts.less');
+require('./contacts.css');
 function getContacts() {
 	return { contacts: ContactsStore.getContacts() }
 }
@@ -29,20 +31,20 @@ var Contacts = React.createClass({
 		var rows = this.state.contacts.map(function(contact, i) {
 			return (
 				<tr key={i}>
-					<td>{contact.name}</td>
-					<td>{contact.hours_remaining}</td>
+					<td><span className="contact-name">{contact.name}</span></td>
+					<td>{contact.hours_left}</td>
 					<td>{contact.total_hours}</td>
 				</tr>
 			)
 		});
 
 		return (
-			<div>
-				<table className="table table-striped">
+			<div className="contacts-holder">
+				<table className="table">
 					<thead>
 						<th>Name</th>
-						<th>Hours Remaining</th>
-						<th>Total Hours</th>
+						<th>Remaining</th>
+						<th>Total</th>
 					</thead>
 					<tbody>
 						{ rows }

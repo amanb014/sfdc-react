@@ -7,9 +7,10 @@ var RouteHandler 	= Router.RouteHandler
 var Route 			= Router.Route;
 var DefaultRoute 	= Router.DefaultRoute;
 //view components
-var Contacts 	= require('./components/contacts');
+var Contacts 	= require('./components/contacts/contacts');
 //stores
 var ContactsStore 	= require('./stores/contactsStore');
+import 'normalize.css';
 
 var routes = (
 	<Route handler={ ContactsManager  }>
