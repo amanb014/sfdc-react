@@ -1,33 +1,36 @@
-var React 			= require('react');
-var Reflux 			= require('reflux');
-var ContactsStore 	= require('../../stores/contactsStore');
+import React, {Component} from 'react';
+import Reflux from 'reflux';
+
+var ContactsStore 	= require('../stores/contactsStore');
 
 var Link 			= require('react-router').Link;
 
-// require('./contacts.less');
 require('./contacts.css');
+
 function getContacts() {
 	return { contacts: ContactsStore.getContacts() }
 }
 
-var Contacts = React.createClass({
-	mixins: [Reflux.ListenerMixin],
 
-	componentDidMount: function() {
-		this.listenTo(ContactsStore, this.refreshTable);
-	},
+class Contacts extends Component {
+	mixins: [Reflux.ListenerMixin];
 
-	refreshTable: function() {
+	constructor(props) {
+		super(props);
+		this.state = getContacts();
+	}
+
+	// componentDidMount() {
+	// 	this.listenTo(ContactsStore, this.refreshTable);
+	// }
+
+	refreshTable() {
 		this.setState({
 			contacts: ContactsStore.getContacts()
 		});
-	},
+	}
 
-	getInitialState: function() {
-		return getContacts();
-	},
-
-	render: function() {
+	render() {
 		var rows = this.state.contacts.map(function(contact, i) {
 			return (
 				<tr key={i}>
@@ -42,18 +45,17 @@ var Contacts = React.createClass({
 			<div className="contacts-holder">
 				<table className="table">
 					<thead>
-						<th>Name</th>
-						<th>Remaining</th>
-						<th>Total</th>
+						<tr>Name</tr>
+						<tr>Remaining</tr>
+						<tr>Total</tr>
 					</thead>
 					<tbody>
-						{ rows }
+						{rows}
 					</tbody>
-
 				</table>
 			</div>
 		)
 	}
-});
+}	
 
-module.exports = Contacts;
+export default Contacts;

@@ -1,0 +1,14 @@
+body {
+    background-color: #EDF7FF;
+}
+
+.header {
+	font-size: 28px;
+	font-family: sans-serif;
+	font-weight: bold;
+	text-align: center;
+	padding: 20px 0 5px 0;
+	background-color: #7D96FF;
+	margin: 0 0 15px 0;
+	color: #3e3e3e;
+}

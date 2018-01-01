@@ -1,31 +1,21 @@
 // jsx React.DOM xx
-var React 			= require('react');
-var Reflux			= require('reflux');
+
+import React from 'react';
+import ReactDOM from 'react-dom';
 //Routing
-var Router 			= require('react-router');
-var RouteHandler 	= Router.RouteHandler
-var Route 			= Router.Route;
-var DefaultRoute 	= Router.DefaultRoute;
+// var Router 			= require('react-router');
+// var RouteHandler 	= Router.RouteHandler
+// var Route 			= Router.Route;
+// var DefaultRoute 	= Router.DefaultRoute;
 //view components
-var Contacts 	= require('./components/contacts/contacts');
-//stores
-var ContactsStore 	= require('./stores/contactsStore');
+import Main from './components/Main';
+// var Contacts 	= require('./components/contacts/contacts');
+// //stores
+// var ContactsStore 	= require('./stores/contactsStore');
 import 'normalize.css';
 
-var routes = (
-	<Route handler={ ContactsManager  }>
-		<DefaultRoute name="home" handler={Contacts} />
-	</Route>
-	);
 
-var ContactsManager = React.createClass({
-	render: function() {
-		return (
-			<RouteHandler/>
-			);
-	}
-});
-
-Router.run(routes, function(Handler) {
-	React.render(<Handler/>, document.getElementById('app'));
-})
+ReactDOM.render(
+  <Main />,
+  document.getElementById('container')
+);
