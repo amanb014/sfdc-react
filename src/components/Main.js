@@ -12,6 +12,8 @@ class Main extends Component {
 
 	render() {
 
+		//This will change to a state
+		//instead of being a const
 		const navData = [
 			{
 				name: 'Home',
